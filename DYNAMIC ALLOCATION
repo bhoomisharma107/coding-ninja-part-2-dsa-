@@ -1,0 +1,400 @@
+int f(int x, int *py, int **ppz) {
+    int y, z;
+    **ppz += 1;
+    z = **ppz;
+    *py += 2;
+    y = *py;
+    x += 3;
+    return x + y + z;
+}
+
+int main() {
+    int c, *b, **a;
+    c = 4;
+    b = &c;
+    a = &b;
+    cout << f(c, b, a);
+    return 0;
+}
+ANSWER 1:
+see, here we have c=4 .. b=&c.. a=&b ... then we r passing these 3 to f function ... as x, *py, **ppz
+
+
+so x is just a copy of c.. sent by pass by value method.... but py and ppz are 2 pointers ... and any chnage made in them will be reflected in c as well as pz and ppz simultaneously
+
+
+then in f func.... **ppz+=1 , so z=**ppz = 5 
+
+
+and also py=5 .. bcoz any chng made in pointer will also be reflected to other pointers
+
+
+then *py+=2 = 5+2 = 7 = y
+
+
+and then x = x+3 = 4+3 = 7
+
+
+so 7+7+5 = 19
+===============================================================================================================================================================================
+QUESTION 2:
+void pointer
+Send Feedback
+Void pointer can point to which type of objects ?
+============================================================
+
+ANSWER 2:
+(ALL)
+int
+double
+float
+=====================================================================================================================================================================
+QUESTION 3:
+What is the output
+Send Feedback
+int main()
+{
+        int d = 65;
+        int i = d;
+        char ch = i;
+        cout << ch << endl;
+}
+ANSWER 3:
+A
+=======================================================================================================================================================================
+QUESTION 4:
+What is the output
+Send Feedback
+#include <iostream>
+using namespace std;
+
+void updateValue(int *p){
+    *p = 610 % 255;
+}
+
+int main(){
+    char ch = 'A';
+    updateValue((int*)&ch);
+    cout << ch;
+}
+=========================================================================================================================================================================
+ANSWER 4:
+d
+====================================================================================================================================================================
+QUESTION 5:
+Reference Variable
+Send Feedback
+What is the correct syntax of declaring and defining a reference?
+===================================================================
+ANSWER 5:
+int a = 10; int &b = a; 
+======================================================================
+QUESTION 6:
+What is the output
+Send Feedback
+#include <iostream>
+using namespace std;
+
+void func(int p){
+    cout << p << " ";
+}
+
+int main(){
+    int i = 10;
+    int &p = i;
+    func(p++);
+    cout << i;
+}
+======================================================================================================================================================================
+ANSWER 6:
+10 11
+================================================================================================================================================================
+QUESTION 7:
+What is the output
+Send Feedback
+#include <iostream>
+using namespace std;
+
+void func(int i, int& j, int p){
+    i++;
+    j++;
+    p++;
+}
+
+int main(){
+    int i = 10;
+    int j = 6;
+    int &p = i;
+    func(i, j, p);
+    cout << i << " " << j << " " << p;
+}
+==============================================================================================================================================================================
+ANSWER 7:
+10 7 10//SINCE J HI REFERENCE VARAIBLE PASS HO RAHA HAI SO ISI KI VALUE ME CHANGE AAYEGA BAKI WILL REMAIN UNCHANGED//AS WE KNNOW VARIABLES BEING PASSED THROUGH REFRENCING GETS CCHANGED ORIGINALLY REST REMAIN SAME
+======================================================================================================================================================================
+QUESTION 8:
+Dynamic memory allocation
+Send Feedback
+In CPP, dynamic memory allocation is done using ______________ operator.
+==============================================================================
+ANSWER 8:
+NEW OPERATOR HELPS TO ALLOCATE THE MEMORY DURING THE RUN TIME;
+===============================================================================================================================================================================
+QUESTION 9:
+Deallocate memory
+Send Feedback
+How will you free the memory allocated by following program -
+#include <iostream>
+using namespace std;    
+
+int main() {
+    int *a = new int;
+}
+===============================================================================================================================================================================
+ANSWER 9:
+DELETE a
+==========================================================================================================================================================================
+QUESTION 10:
+Create array
+Send Feedback
+Correct statement for creating an integer array of size 5, dynamically -
+========================================================================================================================================================================
+ANSWER 10:
+int *arr = new int[5]; 
+===================================================================================================================================================================
+QUESTION 11:
+Deallocate array
+Send Feedback
+Correct statement for deallocating the array is -
+==================================================================================================================================================================
+ANSWER 11:
+delete [] arr; 
+================================================================================================================================================================
+QUESTION 12:
+Delete memory
+Send Feedback
+On deleting a dynamic memory, if the pointer value is not modified, then the pointer points to?
+============================================================================================================================================================================
+ANSWER 12:
+THE SAME DELETED MEMORY LOCATION
+======================================================================================================================================================================
+QUESTION 13:
+2D arrays
+Send Feedback
+How to Dynamically create a Two Dimensional Array in C++?
+======================================================================================================================================================================
+ANSWER 13:
+int **twoDArray = new int*[10]; 
+==============================================================================================================================================================
+QUESTION 14:
+agged arrays
+Send Feedback
+Can we create Jagged Arrays in C++ ?
+======================================================================================================================================================================
+ANSWER 14
+YES.
+A jagged array is an array of arrays such that member arrays can be of different sizes, i.e., we can create a 2-D array but with a variable number of columns in each row.
+These types of arrays are also known as Jagged arrays
+=============================================================================================================================================================================
+QUESTION 15:
+Delete 2D array
+Send Feedback
+Given the following CPP Program. Select the CORRECT Syntax of deleting this 2D array? Check all that apply.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int **twoDArray = new int*[10];
+    for(int i = 0; i < 10; i++)
+        *(twoDArray + i) = new int[10];
+}
+===========================================================================================================================================================================
+ANSWER 15
+C.
+for(int i = 0; i < 10; i++)
+    delete [] twoDArray[i];
+    delete[] twoDArray;
+    =====================================================================================================================================================================
+QUESTION 16:
+What is the output
+Send Feedback
+What is the output of the following program?
+#include<iostream>
+using namespace std;
+
+int x = 1;
+
+void print(){
+    int x = 2;
+    {
+        int x = 3;
+        cout << x << endl;
+    }
+}
+int main(){
+    print();
+    return 0;
+}
+===================================================================================================================================================================
+ANSWER 16:
+3
+=======================================================================================================================================================================
+QUESTION 17:
+ill the output
+Send Feedback
+What is the output of the following program?
+#include <iostream>
+using namespace std;
+
+#define MULTIPLY(a, b) a*b
+
+int main(){
+    cout << MULTIPLY(2+3, 3+5);
+    return 0;
+}
+=======================================================================================================================================================================
+ANSWER 16
+explanation
+it will be 2+3 * 3+5=2+9+5=16:
+========================================================================================================================================================================
+
+
+=============================================================================================================================================================
+QUESTION 18
+Inline functions
+Send Feedback
+Inline functions are useful when ______
+========================================================================================================================================================
+ANSWER 18:
+Solution Description
+Inline functions are used to reduce the function call overhead. Inline function is a function that is expanded in line when it is called.Function is small and we want to avoid function call overhead. 
+==========================================================================================================================================================================
+QUESTION 19:
+What is the output
+Send Feedback
+What is the output of the following program ?
+#include<iostream>
+using namespace std;
+
+int getValue(int x = 0, int y = 0, int z){  
+    return (x + y + z); 
+}
+
+int main(){
+   cout << getValue(10);
+   return 0;
+}
+===============================================================================================================================================================================
+ANSWER 19
+COMPILATON ERROR:
+========================================================================================================================================================================
+QUESTION 20:
+Default arguments
+Send Feedback
+Which of the following statement is correct?
+=======================================================================================================================================================================
+ANSWER 20:
+ALL THE PARAMETERES OF THE FUNCTION CAN BE DEFAULT PARAMETERES
+=====================================================================================================================================================================
+QUESTION 21:
+What is the output
+Send Feedback
+What is the output of the following program ?
+#include <iostream>
+using namespace std;
+
+int main(){
+    int  const  p = 5;
+    cout << ++p;
+    return 0;
+}
+=======================================================================================================================
+ANSWER 21
+5 ONLY// SINCE VALUE OF CONSTANT VARIABLES CANT BE CHANGED
+==============================================================================================================================================================================
+QUESTION 22:
+What is the output
+Send Feedback
+#include <iostream>
+using namespace std;
+
+int main(){
+    int p = 5;
+    int const *q = &p;//THIS MEANS Q IS POINTING TOWARDS CONSTANT INTEGER 
+    p++;
+    cout << p << endl;
+    return 0;
+}
+===================================================================================================================================================================
+ANSWER 22
+6
+==================================================================================================================================================================
+QUESTION 23
+Constants
+Send Feedback
+Which statement(s) will give an error for the following code -
+#include <iostream>
+using namespace std;
+
+int main(){
+    int p = 5;
+    int const *q = &p;//HERE Q IS POINTING TOWARDS CONSTANT INTEGER SO IT MEANS POINTER PROMISES NOT TO CHANGE THE VALUE OF THE VARIABLE SO THIS WIL GIVE ERROR
+}
+====================================================================================================================================================================
+ANSWER 23
+(*q)++; 
+=================================================================================================================================================================
+QUESTION 24:
+Constants
+Send Feedback
+Which statement(s) will give an error for the following code -
+#include <iostream>
+using namespace std;
+
+int main(){
+    int p = 5;
+    int * const q = &p;//HERE THIS MEANS Q IS A CONSTANT POINTER THIS MEANS POINTER CANT BE ALTER ITSELF EVEN
+}
+=================================================================================================================================================================
+ANSWER 24:
+q++;
+====================================================================================================================================================================
+QUESTIN 25:
+Constants
+Send Feedback
+Which statement(s) will give an error for the following code -
+#include <iostream>
+using namespace std;
+
+int main(){
+    int p = 5;
+    int const * const q = &p;//THIS MEANS Q IS A CONSTANT POINTER AND IS POINTING TOWARDS A CONSTANT INTEGER SO NO CHNGE IN POINTER AND THE VALUE POINTING 
+}=====================================================================================================================================================================
+ANSWER 25:
+(*q)++; 
+q++; 
+=======================================================================================================================================================================
+QUESTION 26:
+Constants
+Send Feedback
+Which statement(s) will give an error for the following code -
+#include <iostream>
+using namespace std;
+
+int main(){
+    const int p = 5;
+    int const *q = &p;
+}
+===============================================================================================================================================================================
+ANSWER 26:
+p++; 
+(*q)++; 
+=================================================================================================================================================================================
+
+
+
+
+
+
+
