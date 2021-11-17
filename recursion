@@ -1,0 +1,129 @@
+Power
+Send Feedback
+Write a program to find x to the power n (i.e. x^n). Take x and n from the user. You need to return the answer.
+Do this recursively.
+Input format :
+Two integers x and n (separated by space)
+===========================================================================================================================================================================
+CODE 1
+t power(int x, int n) {
+  /* Don't write main().
+     Don't read input, it is passed as function argument.
+     Return output and don't print it.
+     Taking input and printing output is handled automatically.
+  */
+if(n==0)//this is base case
+{
+    return 1;
+
+}
+    int smalloutput=power(x,n-1);//this is for small problem
+    int output=x*smalloutput;//this is for multiplying the orignal number wi
+    return output;
+}
+===========================================================================================================================================================================
+PROBLEM2:
+Print Numbers
+Send Feedback
+Given is the code to print numbers from 1 to n in increasing order recursively. But it contains few bugs that you need to rectify such that all the test cases pass.
+=========================================================================================================================================================
+CODE 2:
+void print(int n){
+    if(n==0){//this is a base case for termination
+    return;
+    }
+    print(n-1);//first callin of a function is done
+    cout << n << " ";//after callig we are priting so the  values will get printed in asceding ordder
+}
+=================================================================================================================================================================
+pROBLEM 3:
+Number of Digits
+Send Feedback
+Given the code to find out and return the number of digits present in a number recursively. But it contains few bugs, that you need to rectify such that all the test cases
+should pass.
+==============================================================================================================================================================================
+CODE 3:
+int count(int n){
+    if(n== 0){
+        return 0;
+    }
+    int smallAns = count(n / 10);//it gives the numbers except last digit
+    return smallAns + 1;//adds he last digit left
+}
+============================================================================================================================================================================
+
+
+
+
+
+
+
+
+What is the output
+Send Feedback
+What will be the output of the following code ?
+#include <iostream>
+using namespace std;
+
+int func(int num){
+    return func(num- 1);
+}
+
+int main() {
+    int num = 5;
+    int ans = func(num - 1);
+    cout << ans;
+}
+=================================================================================
+RUNTIME ERROR SINCE BASE CONDITIONS ARE NOT GIVEN
+ince the base case is missing in the code, therefore there will be infinite recursion calls and hence runtime error will occur.
+=================================================================================================================================================================================
+hat is the output
+Send Feedback
+What will be the output ?
+#include <iostream>
+using namespace std;
+
+void print(int n){
+    if(n < 0){
+        return;
+    }
+    cout << n << " ";
+    print(n - 2);
+}
+
+int main() {
+    int num = 5;
+    print(num);
+}
+===============================================================================================================================================
+ANSWER=5,3,1//SINCE FIRST PRINTING THEN CALLING THE FUNCTION SO DESCENDING ORDER HOGA
+==========================================================================================================================================================================
+hat is the output
+Send Feedback
+What will be the output of the following code ?
+#include <iostream>
+using namespace std;
+
+void print(int n){
+    if(n < 0){
+        return;
+    }
+    if(n == 0){
+        cout << n << “ “;
+        return;
+    }
+    print(n --);
+    cout << n << “ “;
+}
+
+int main() {
+    int num = 3;
+    print(num);
+}
+===========================================================================================================================================================================
+ANSWER 
+
+RUNTIME ERROR SINCE FUNCTION KO CHOTI PROBLEM KE LIYE NHI BALKI BADI PROBLEM KE LIYE HI CALL KR DIYA
+n function print when recursion call is being made  n-- is being passed as input. Here we are using post decrement operator, so argument passed to next function call is n and not n - 1.
+Thus there will be infinite recursion calls and runtime error will come.
