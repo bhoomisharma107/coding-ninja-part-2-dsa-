@@ -1,0 +1,145 @@
+Multiplication (Recursive)
+Send Feedback
+Given two integers M & N, calculate and return their multiplication using recursion. You can only use subtraction and addition for your calculation. No other operators are allowed.
+Input format :
+Line 1 : Integer M
+Line 2 : Integer N
+============================================================================================================================================================================
+CODE 1:
+int multiplyNumbers(int m, int n) {
+    // Write your code here
+    int ans;
+    if(m==0 || n==0)//ase case if any number is zero return zero
+        return 0;
+    else//breaking the array frm lAST
+    {
+       ans=multiplyNumbers(m,n-1);//cal function or the number m and n-1 times sice multiplication is done by additio here and n is multipier it will be done till the second las element
+    }
+    return ans+m;//return the 
+
+}
+===================================================================================================================================================================================
+PROBLEM 2:
+
+Count Zeros
+Send Feedback
+Given an integer N, count and return the number of zeros that are present in the given integer using recursion.
+Input Format :
+Integer N
+========================================================================================================================================================================
+CODE 2:
+int countZeros(int n) {
+    // Write your code here
+    int ans;
+if(n==0)//base case if the number itself is zero then count is 1
+    return 1;
+    if(n>0 && n<10){//if number is greater than 0a dn aless than 10 then no zero so return zero act as base case
+        return 0;
+    }
+    else
+    {
+        ans=countZeros(n/10);//else make a call to recursion till the second last digit and that we get from divison operator
+        if(n%10==0)
+        {
+            return ans+1;//now working on the last digitourselves checking if it is 0 the add 1 to the ans returned by recursion
+        }
+        else
+        {
+            return ans;//if not zero then retrn and simply
+        }
+    }
+}
+==============================================================================================================================================================================
+PROBLEM 3:
+Geometric Sum
+Send Feedback
+Given k, find the geometric sum i.e.
+1 + 1/2 + 1/4 + 1/8 + ... + 1/(2^k) 
+using recursion.
+Input format :
+Integer k
+Output format :
+Geometric sum (upto 5 decimal places)
+Constraints :
+=======================================================================================================================================================================
+CODE 3:
+
+#include<cmath>
+double geometricSum(int k) {
+    // Write your code here
+    
+    int ans;
+    if(k==0)//base case if k is zero then we onna return 1 since1/2 raise to power 0 is 1 
+        return 1;
+    else//BREAKING THE ARRAY FROM LAST RECURSIVE CALL WORKING TILL SECIND LAST ELEMENT
+    {
+        return (geometricSum(k-1)+(1/pow(2,k)));//if not then call recursionb fot second last element anf work on the last element annd last element is
+    }
+//recursion call is from 1 to second last element last 
+}
+================================================================================================================================================================================
+PROBLEM 4:
+Check Palindrome (recursive)
+Send Feedback
+Check whether a given String S is a palindrome using recursion. Return true or false.
+Input Format :
+String S
+Output Format :
+'true' or 'false'
+==========================================================================================================================================================================
+CODE 4:
+#include<cstring>
+bool helper(char input[],int start,int end)
+{
+    if(start>=end)//base case for checking like if start ==end it  means only 1 digit is there in the array so it is palindrome obviously
+        return true;//or if start exceeds end it means al characters ar checked so pal
+    else
+    {
+        if(input[start]!=input[end])//now breaking the array from start and end//wworking on the first and last element of the array if they are not same then directly return false no need to cal recursion
+            return false;
+        else
+        {
+            helper(input,start+1,end-1);//otherwise call recursion 1 and last we have checked so call by incrementing start by 1 and decrementing end by 1
+        }
+    }
+}
+bool checkPalindrome(char input[]) {
+    {int size=strlen(input);//
+        helper(input,0,size-1);//calling the helper function by passing start as 0 and end as the size of string 
+    }}
+    ========================================================================================================================================================================
+    PROBLEM 5:
+    
+    Sum of digits (recursive)
+Send Feedback
+Write a recursive function that returns the sum of the digits of a given integer.
+Input format :
+Integer N
+Output format :
+Sum of digits of N
+=========================================================================================================================================================================
+CODE 5:
+int sumOfDigits(int n) {
+    // Write your code here
+    int ans;
+    
+    if(n==0)//base case if  is zero then return 0
+        return 0;
+    if(n==1)
+    {return 1;//if n is 1 then return 1
+    }
+    
+    else
+    {
+        ans=(sumOfDigits(n/10)+n%10);//else recursive call to the second last element ad star adding the last element the last element is obtaie by mod opertor and usse pehla vala division se operate hota hai
+    }
+    return ans;//return
+
+
+}
+
+
+================================================================================================================================================================================
+
+
+
