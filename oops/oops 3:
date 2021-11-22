@@ -1,0 +1,239 @@
+CONSTANT KEYWORD
+Whenever const keyword is attached with any method(), variable, pointer variable, and with the object of a class it prevents that specific object/method()/variable 
+to modify its data items value.
+
+The const variable cannot be left un-initialized at the time of the assignment.
+It cannot be assigned value anywhere in the program.
+Explicit value needed to be provided to the constant variable at the time of declaration of the constant variable.
+==========================================================================================================================================================================
+INITIALISATION LIST:
+THIS LIST IS REQUIRED TO INITIALISE THE VALUES TO THE CONSTANT DATA MEMEBERS
+IN ORDER TO INITIALISE THE VALUE TO THE CONSTANT DATA MEMBERS WE NEED TO USE THE CONSTRUCTORS AND INITIALISATION LIST.
+int CONSTANT rollnumber;
+EXAMPLE= STUDENT(INT r): rollnumber(r);
+//we cant do like this
+int CONSTANT rollnumber=101 //since all roll numbers will get initialised with 101 and we dont waant this to happen
+================================================================================================================================================================================
+What is the output
+Send Feedback
+class Student {
+    public :
+
+    const int rollNumber;
+    int age;
+
+};
+
+
+int main() {
+    Student s1;
+    s1.rollNumber = 101;
+    s1.age = 20;
+
+    cout << s1.rollNumber << " " << s1.age;
+
+}
+=================================================================================================================================================================================
+ANSWER 
+COMPILATION ERROR//SINCE CONSTANT VLUES NEED TO BE INITIALISED AT THE TIME OF DECLARATION OR WE CAN USE CONSTRUCTORS WITH INITIALISING LIST TO GIVE THE VALUE TO THE 
+CONSTANT KKEYWORDS
+================================================================================================================================================================================
+QUESTION 2:
+What is the output
+Send Feedback
+class Student {
+    public :
+
+    const int rollNumber;
+    int age;
+
+    Student(int r, int a) : rollNumber(r), age(a) {
+    }
+};
+
+
+int main() {
+    Student s1(100, 23);
+    cout << s1.rollNumber << " " << s1.age;
+}
+-===============================================================================================================================================================================
+ANSWER 2:
+100,23//HERE WE WILL GET THE RESULTS BECAUSE THE VALUE OF CONSTAT KEYWORD IS INITIALISED IN CORRECT WAY BY USING CONSTRUCTORS AND INITIALISING LIST
+==============================================================================================================================================================================
+QUESTION 3:
+What is the output
+Send Feedback
+class Student {
+    public :
+
+    const int rollNumber;
+    int age;
+
+    int &x;//HERE IS WHERE WE GET THE ERROR////////////////////////////
+
+    Student(int r, int a) : rollNumber(r), age(a) {
+    }
+};
+
+
+int main() {
+    Student s1(100, 23);
+    s1.x = age;//////////////////REFRENCED VARIABLE GETTING INITIALSED AFTER DECLARATION/////////////////////
+    cout << s1.rollNumber << " " << s1.age << " " << s1.x;
+}
+===================================================================================================================================================================================
+ANSWER 3:
+ERROR//SINCE SAME LIKE CONSTANT VALUES REFRENCED VALUES NEED TO BE INTIIALISED AT THE TIME OF DECLARATION SO THATS WHY IT GIVES US THE ERROR
+============================================================================================================================================================================
+
+CONSTANT OBJECTS:
+WE CAN CREATE CONSTANT OBJECTS IN THE CLASS . AND THROUGH THOSE CONSTANT OBJECTS WE CANT CALL ANY TYPE OF THE FUNCTION SINCE COMPILER WORRIES IF THE VALUE OF CONSTANT OBJECT IS 
+CHANGED BY ANY OTHER FUNCTION
+Constant objects can only call constant member functions
+CONSTANT FUNCTION= THIS FUNCTION DONT GHANGE ANY VALUE OF THE OBJECT
+set numenator() and set denominator() cant be constat functions since they change the value.
+===================================================================================================================================================================================
+QUESTION 4:
+Member function
+Send Feedback
+If a member function does not alter any data in the class, that may be declared as ....................
+=============================================================================================================================================================================
+ANSWER 4:
+CONSTANT MEMBER FUNCTIONS.
+=============================================================================================================================================================================
+QUESTION 5:
+What is the output
+Send Feedback
+class Student {
+    public :
+
+    int rollNumber;
+    int age;
+
+};
+
+
+int main() {
+    Student s1;
+
+    Student const s2 = s1;
+
+    s1.rollNumber = 101;
+    s1.age = 20;
+
+    cout << s2.rollNumber << " " << s2.age;
+}=============================================================================================================================================================================
+ANSWER 5:
+GARBAGE VALUE
+=============================================================================================================================================================================
+QUESTION 6:
+What is the output
+Send Feedback
+class Student {
+    int rollNumber;
+
+    public :
+
+    int age;
+
+    Student(int r) {
+        rollNumber = r;
+    }
+
+    int getRollNumber() {
+        return rollNumber;
+    }
+
+};
+
+
+int main() {
+    Student s1(101);
+    s1.age = 20;
+
+    Student const s2 = s1;
+    cout << s2.getRollNumber();
+}
+==============================================================================================================================================================================
+ANSWER 6:
+ERROR SINCE GET FUNCTION SHOULD BE USED WITH A FUNCTION OF CONST KEYWORD SO WE WILL GET AN EROR SINCE WE KNOW CONSTANT OBJECTS CAN ONLY CALL CONSTANT FUNCTIONS
+=============================================================================================================================================================================
+STATIC MEMBERS:
+A static member is shared by all objects of the class. All static data is initialized to zero when the first object is created,
+if no other initialization is present. We can't put it in the class definition but it can be initialized outside the class as done in the following example by
+redeclaring the static variable, using the scope resolution operator :: to identify which class it belongs to
+static functions  can work on static data only.
+///////////////////////////static functions dont have this keyword//////////////////////////////////////////////////////////////////////
+except static functions in class  every functions have access of this keyword
+=============================================================================================================================================================================
+QUESTION 7:
+Correct statement
+Send Feedback
+class Student {
+    public :
+
+    int rollNumber;
+    static int totalStudents;
+};
+
+int Student::totalStudents = 20;
+
+int main() {
+    Student s;
+    // Correct statement to access totalStudents
+}
+=============================================================================================================================================================================
+ANSWER 7:
+student :: totalstudents;
+==============================================================================================================================================================================
+QUESTION 8:
+What is the output
+Send Feedback
+class Student {
+    public :
+
+    int rollNumber;
+
+    static int getRollNumber() {
+        return rollNumber;
+    }
+};
+
+
+int main() {
+    Student s;
+    s.rollNumber = 101;
+    cout << s.getRollNumber() << endl;
+}
+
+=============================================================================================================================================================================
+ANSWER 8:
+COMPILATION ERROR:
+===============================================================================================================================================================================
+QUESTION 9:
+Fill the output
+Send Feedback
+class Student {
+    public :
+
+    int rollNumber;
+    static int totalStudents;
+
+    Student() {
+        totalStudents++;
+    }
+};
+
+int Student::totalStudents = 20;
+
+int main() {
+    Student s1, s2, s3, s4;
+    cout << Student :: totalStudents;
+}
+==============================================================================================================================================================================
+ANSWER 9: 24//SINCE WE HAVE CONSTRUCTED A CONSTRUCTOR WHICH WILL INCREMENT THE VALUES OF TOTAL STUDENTS AND WILL GIVE THE RESULT.
+==============================================================================================================================================================================
+QUESTION 10:
+
+
+
