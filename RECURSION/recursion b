@@ -1,0 +1,120 @@
+Remove X
+Send Feedback
+Given a string, compute recursively a new string where all 'x' chars have been removed.
+Input format :
+String S
+Output format :
+Modified String
+Constraints :
+1 <= |S| <= 10^3
+where |S| represents the length of string 
+==================================================================================================================================================================================
+CODE1:
+/ Change in the given string itself. So no need to return or print anything
+#include<cstring>
+void helper(char input[],int start)
+{
+    //if(input[start]=='\0' || input[start+1]=='\0')//this wont be a base case
+        if(input[start]=='\0')
+        {
+        return;
+        }
+    helper(input,start+1);//recursive call
+    if(input[start]=='x')
+    {//return input[0]+helper(input,start+1);//this cant be done since function ka return void h so agr pehla hi character x hua then shift the elements
+        int size=strlen(input);
+        for(int i=start+1;i<=size;i++)
+        {
+            input[i-1]=input[i];//SHIFTING ELEMENTS PEECHE KI TARAF
+        }
+    }
+
+
+}
+void removeX(char input[]) {
+    // Write your code here
+    helper(input,0);
+    
+
+}
+===============================================================================================================================================================================
+PROBLEM 2:
+String to Integer
+Send Feedback
+Write a recursive function to convert a given string into the number it represents. That is input will be a numeric string that contains only numbers, you need to convert the string into corresponding integer and return the answer.
+Input format :
+Numeric string S (string, Eg. "1234")
+Output format :
+Corresponding integer N (int, Eg. 1234)
+Constraints :
+0 <= |S| <= 9
+where |S| represents length of string S
+===============================================================================================================================================================================
+CODE 2:
+#include<cstring>
+#include<cmath>
+
+int stringToNumber(char input[]) {
+    // Write your code here
+    int size=strlen(input);
+    if(input[0]=='\0')//base case
+        return 0;
+    int a=input[0]-'0';
+    int b=stringToNumber(input+1)+a*pow(10,size-1);
+    return b;
+    
+}
+==============================================================================================================================================================================
+CODE 2:
+
+#include<cstring>
+#include<cmath>
+
+int stringToNumber(char input[]) {
+    // Write your code here
+    int size=strlen(input);
+    if(input[0]=='\0')//base case
+        return 0;
+    int a=input[0]-'0';
+    int b=stringToNumber(input+1)+a*pow(10,size-1);
+    return b;
+    
+}
+=============================================================================================================================================================================
+PROBLEM 3:
+
+Pair Star
+Send Feedback
+Given a string S, compute recursively a new string where identical chars that are adjacent in the original string are separated from each other by a "*".
+Input format :
+String S
+Output format :
+Modified string
+Constraints :
+0 <= |S| <= 1000
+where |S| represents length of string S
+
+================================================================================================================================================================================
+CODE 3:
+// Change in the given string itself. So no need to return or print the changed string.
+#include<cstring>
+void pairStar(char input[]) {
+    // Write your code here
+    if(input[0]=='\0')//base case
+        return ;
+    if(input[0]==input[1])
+    {
+        for(int i=strlen(input);i>=0;i--)
+        {
+            input[i+1]=input[i];
+        }
+        input[1]='*';
+    }
+    pairStar(input+1);
+    
+
+}
+==============================================================================================================================================================================
+
+
+
