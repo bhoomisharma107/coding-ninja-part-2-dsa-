@@ -1,0 +1,101 @@
+Reverse a Stack
+Send Feedback
+You have been given two stacks that can store integers as the data. Out of the two given stacks, one is populated and the other one is empty. 
+You are required to write a function that reverses the populated stack using the one which is empty.
+==================================================================================================================================================================================
+CODE 1:
+void reverseStack(stack<int> &input, stack<int> &extra) {
+    //Write your code here}
+    if(input.size()==0 || input.size()==1)//if size is 0 and 1 then the stack is same as the reversed one
+        return;
+    int x=input.top();//else take the top element of the stack
+    input.pop();//pop that element out and store that in other element
+    reverseStack(input,extra);//tell recursion to reverse the stack
+    while(input.size()!=0)//till the origanal stack  gets empty  pop the elements out and push them in extra stack
+    {
+        int x=input.top();//top elemet of reverse stak
+        input.pop();//taken out the elemeent
+        extra.push(x);//pushed into the extra satck
+    }
+    input.push(x);//when origanal stack gets empty then push the top element in the orignal stack
+    while(extra.size()!=0)//now go to extra stack 
+    {
+        int x=extra.top();//take the top element 
+        extra.pop();//pop it out
+        input.push(x);//push the elements in orignal stack hence stack is reversed
+    }
+    return;
+    
+
+}
+===================================================================================================================================================================================
+Reverse Queue
+Send Feedback
+You have been given a queue that can store integers as the data. You are required to write a function that reverses the populated queue itself without using 
+any other data structures.
+Example:
+
+================================================================================================================================================================
+CODE 2:
+#include<queue>
+#include<stack>
+void reverseQueue(queue<int> &input) 
+{
+	// Write your code here
+    stack<int> s;
+    while(!input.empty())
+    {
+        s.push(input.front());
+        input.pop();
+    }
+    while(!s.empty())
+    {
+        input.push(s.top());
+        s.pop();
+    }
+}
+==================================================================================================================================================================
+Check redundant brackets
+Send Feedback
+For a given expression in the form of a string, find if there exist any redundant brackets or not. It is given that the expression contains only 
+rounded brackets or parenthesis and the input expression will always be balanced.
+A pair of the bracket is said to be redundant when a sub-expression is surrounded by unnecessary or needless brackets.
+==============================================================================================================================================================================
+CODE 3:
+#include<stack>
+bool checkRedundantBrackets(string str) {
+	// Write your code here
+    stack<char> st;
+    for(int i=0;i<str.size();i++)
+    {
+        if (str[i]!=')'){
+            st.push(str[i]);
+        }
+        else{
+            int count=0;
+            while(st.top()!='('){
+                st.pop();
+                count++;
+            }
+            if (count<3){
+                return true;
+            }
+            st.pop();// to pop that opening bracket which was already used
+            st.push('s');  // for cases like ((a+b)+c)-----> jab hum isko stack mein bhar rhe honge toh for outer bracket
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }
+    }
+    return false;
+} 
+    
+
+                  =============================================================================================================================================================
+                  
