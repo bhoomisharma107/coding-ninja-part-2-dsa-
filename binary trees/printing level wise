@@ -1,0 +1,56 @@
+/**********************************************************
+
+	Following is the Binary Tree Node class structure
+
+	template <typename T>
+	class BinaryTreeNode {
+    	public : 
+    	T data;
+    	BinaryTreeNode<T> *left;
+    	BinaryTreeNode<T> *right;
+
+    	BinaryTreeNode(T data) {
+        	this -> data = data;
+        	left = NULL;
+        	right = NULL;
+    	}
+	};
+
+***********************************************************/
+
+void printLevelWise(BinaryTreeNode<int> *root) {
+	// Write your code here
+    if(root==NULL)//if root hi nul huaa= then return hojana
+        return;
+   
+    queue<BinaryTreeNode<int>*> pendingnodes;//created queue
+    pendingnodes.push(root);//queue me root push kr fiya
+    while(pendingnodes.size()!=0)//jb tk queue ka siz zero nhi hoyta
+    {
+        BinaryTreeNode<int>* front=pendingnodes.front();//front element lelo front me queue ke
+        pendingnodes.pop();//usko pop kro
+        cout<<front->data<<":";//usko print krooooo
+        if(front->left!=NULL)
+        {
+            
+            pendingnodes.push(front->left);//left o push kt do
+            cout<<"L:"<<front->left->data<<",";//aur left ko print kt fo
+            
+        }
+        else
+        {
+            cout<<"L:"<<-1<<",";
+        }
+        if(front->right!=NULL)
+        {
+            
+            pendingnodes.push(front->right);//then right ko piush kt foo
+            cout<<"R:"<<front->right->data<<endl;//right ko ptint be kr do
+        }
+        else
+        {
+            cout<<"R:"<<-1<<endl;
+        }
+        
+    }
+}
