@@ -1,0 +1,103 @@
+Min and Max of Binary Tree
+Send Feedback
+For a given a Binary Tree of type integer, find and return the minimum and the maximum data values.
+Return the output as an object of Pair class, which is already created.
+Note:
+All the node data will be unique and hence there will always exist a minimum and maximum node data.
+Input Format:
+The first and the only line of input will contain the node data, all separated by a single space. Since -1 is used as an indication whether the left or right
+node data exist for root, it will not be a part of the node data.
+=================================================================================================================================================================================
+CODE 1:
+#include<climits>
+pair<int, int> getMinAndMax(BinaryTreeNode<int> *root) {
+	// Write your code here
+    if(root==NULL)
+    {
+        pair<int, int> p;
+        p.first=INT_MAX;
+        p.second=INT_MIN;
+        return p;
+    }
+    pair<int, int> leftans=getMinAndMax(root->left);
+    pair<int, int> rightans=getMinAndMax(root->right);
+    int leftmin=leftans.first;
+    int leftmax=leftans.second;
+    int rightmin=rightans.first;
+    int rightmax=rightans.second;
+    int resultmax=max(root->data,max(leftmax,rightmax));
+    int resultmin=min(root->data,min(leftmin,rightmin));
+    pair<int, int> ans;
+    ans.first=resultmin;
+    ans.second=resultmax;
+    return ans;
+    
+    
+    
+}
+=================================================================================================================================================================================
+QIUESTION 2:
+Construct Tree from Postorder and Inorder
+Send Feedback
+For a given postorder and inorder traversal of a Binary Tree of type integer stored in an array/list, create the binary tree using the given two arrays/lists.
+You just need to construct the tree and return the root.
+Note:
+Assume that the Binary Tree contains only unique elements. 
+Input Format:
+================================================================================================================================================================================
+CODE 2:
+=
+BinaryTreeNode<int>* buildTree(int *postorder, int postLength, int *inorder, int inLength) {
+
+    if(postLength==0 || inLength==0){
+        return NULL;
+    }
+    BinaryTreeNode<int>* root=new BinaryTreeNode<int>(postorder[postLength-1]);//last eleemnt of the postorder contains the root of the element
+    int rootindex=0;
+    for(int i=0;inorder[i]!=root->data;i++){//calculating the index of the root 
+         rootindex++;
+    }
+    root->left=buildTree(postorder,rootindex,inorder,rootindex);
+    root->right=buildTree(postorder+rootindex,postLength-rootindex-1,inorder+rootindex+1,inLength-rootindex-1);
+    return root;  
+
+}
+=================================================================================================================================================================================
+Check Balanced
+Send Feedback
+Given a binary tree, check if it is balanced. Return true if given binary tree is balanced, false otherwise.
+Balanced Binary Tree:
+A empty binary tree or binary tree with zero nodes is always balanced. For a non empty binary tree to be balanced, following conditions must be met:
+1. The left and right subtrees must be balanced.
+2. |hL - hR| <= 1, where hL is the height or depth of left subtree and hR is the height or depth of right subtree.    
+Input format:
+The first line of input contains data of the nodes of the tree in level order form. The data of the nodes of the tree is separated by space. 
+If any node does not have a left or right child, take -1 in its place. Since -1 is used as an indication whether the left or right nodes exist, therefore
+, it will not be a part of the data of any node.
+
+================================================================================================================================================================================
+code 3:
+***********************************************************/
+int height(BinaryTreeNode<int> *root)
+{int finalheight=0;
+    if(root==NULL)
+        return 0;
+    int lheight=height(root->left);
+    int rheight=height(root->right);
+ finalheight=lheight+rheight+1;
+ return finalheight;
+    
+}
+bool isBalanced(BinaryTreeNode<int> *root) {
+	// Write your code here
+    if(root==NULL)
+        return true;
+    int lheight=height(root->left);
+    int rheight=height(root->right);
+    if(lheight==rheight)
+    {
+        return true;}
+    return false;
+    
+    
+}===========================================================================================================================================================================
