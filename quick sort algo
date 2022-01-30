@@ -1,0 +1,56 @@
+//program to implement quick sort
+#include <iostream>
+
+using namespace std;
+void swap(int array[],int i,int j)
+{
+    int temp=array[i];
+    array[i]=array[j];
+    array[j]=temp;
+    
+}
+int partition(int array[],int low,int high)
+{
+    int pivot=array[high];
+    int i=low-1;
+    for(int j=low;j<high;j++)
+    {
+        if(array[j]<pivot)
+        {
+            i++;
+            swap(array,i,j);
+        }
+    }
+    swap(array,i+1,high);//i+1 vala piot replace hoga kyunki use pehal chote elements than pivoy
+    return i+1;
+    
+}
+void quicksort(int array[],int low,int high)
+{
+    if(low<high)
+    {
+    int pivotindex=partition(array,low,high);
+    quicksort(array,low,pivotindex-1);
+    quicksort(array,pivotindex+1,high);
+    
+}}
+int main()
+{
+    int n;
+    cout<<"enter the size of the array"<<endl;
+    cin>>n;
+    cout<<"enter the elements in the array"<<endl;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+        
+    }
+    quicksort(arr,0,n-1);
+    cout<<"the sorted array is"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<endl;
+    }
+    return 0;
+}
