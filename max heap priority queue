@@ -1,0 +1,122 @@
+Code : Max Priority Queue
+Send Feedback
+Implement the class for Max Priority Queue which includes following functions -
+1. getSize -
+Return the size of priority queue i.e. number of elements present in the priority queue.
+2. isEmpty -
+Check if priority queue is empty or not. Return true or false accordingly.
+3. insert -
+Given an element, insert that element in the priority queue at the correct position.
+4. getMax -
+Return the maximum element present in the priority queue without deleting. Return -Infinity if priority queue is empty.
+5. removeMax -
+Delete and return the maximum element present in the priority queue. Return -Infinity if priority queue is empty.
+Note : main function is given for your reference which we are using internally to test the class.
+=========================================================================================================================================
+CODE 1:::|
+#include<vector>
+class PriorityQueue {
+    // Declare the data members here
+    vector<int> pq;
+
+   public:
+    PriorityQueue() {
+        // Implement the constructor here
+    }
+
+    /**************** Implement all the public functions here ***************/
+
+    void insert(int element) {
+        // Implement the insert() function here
+        pq.push_back(element);
+        int childindex=pq.size()-1;
+        while(childindex>0)
+        {
+            int parentindex=(childindex-1)/2;
+            if(pq[childindex]>pq[parentindex])
+            {
+                int temp=pq[childindex];
+                pq[childindex]=pq[parentindex];
+                pq[parentindex]=temp;
+                
+            }
+            else
+            {
+                break;
+            }
+            childindex=parentindex;
+        }
+    }
+
+    int getMax() {
+        // Implement the getMax() function here
+        if(pq.size()==0)
+            return 0;
+        int ans=pq[0];
+        return ans;
+    }
+
+    int removeMax() {
+        // Implement the removeMax() function here
+        if(isEmpty())
+        {
+            return 0;
+        }
+        int ans=pq[0];//root element me mex element hoga max hep ke 
+        pq[0]=pq[pq.size()-1];///then replace root with the last element
+        pq[pq.size()-1]=ans;
+        pq.pop_back();//deletes the last eement
+        int parentindex=0;//initialises the parent index
+        int leftchild=2*parentindex+1;//leftcildd
+        int rightchild=2*parentindex+2;//right child
+        while(leftchild<pq.size())
+        {
+            int minindex=parentindex;
+            if(pq[leftchild]>pq[minindex])
+            {
+                minindex=leftchild;
+                
+            }
+            if(pq[rightchild]>pq[minindex] && rightchild<pq.size())
+            {
+                minindex=rightchild;
+            }
+            if(minindex==parentindex)
+            {
+                break;
+            }
+            int temp=pq[minindex];
+            pq[minindex]=pq[parentindex];
+            pq[parentindex]=temp;
+            parentindex=minindex;
+            leftchild=2*parentindex+1;
+            rightchild=2*parentindex+2;
+          
+            
+            
+            
+               
+        }
+        return ans;
+
+        
+        
+        
+    }
+        
+        
+    
+
+    int getSize() { 
+        // Implement the getSize() function here
+        return pq.size(); 
+    }
+
+    bool isEmpty() {
+        // Implement the isEmpty() function here
+        if(pq.size()==0)
+            return true;
+            else
+                return false;
+    }
+};
