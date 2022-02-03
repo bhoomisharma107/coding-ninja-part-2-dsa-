@@ -1,0 +1,81 @@
+various questions for priority queue implementation//
+Code : K smallest Elements
+Send Feedback
+You are given with an integer k and an array of integers that contain numbers in random order. Write a program to find k smallest numbers from given array. You need to save
+them in an array and return it.
+Time complexity should be O(n * logk) and space complexity should not be more than O(k).
+Note: Order of elements in the output is not important.
+================================================================================================================================================================================
+ANSWER 1:
+priority_queue<int> pq;
+for(int i=0;i<k;i++)
+{
+    pq.push(arr[i]);
+}
+    for(int j=k;j<n;j++)
+    {
+        if(pq.top()>arr[j])
+        {
+            pq.pop();
+            pq.push(arr[j]);
+        }
+    }
+    vector<int> ans;
+    while(!pq.empty())
+    {
+        ans.push_back(pq.top());
+        pq.pop();
+        
+    }
+    return ans;
+    
+}
+=====================================================================================================================================================================================
+QUESTIONS 2:
+Code : K largest elements
+Send Feedback
+You are given with an integer k and an array of integers that contain numbers in random order. Write a program to find k largest numbers from given array.
+You need to save them in an array and return it.
+Time complexity should be O(nlogk) and space complexity should be not more than O(k).
+Order of elements in the output is not important.
+Input Format :
+Line 1 : Size of array (n)
+Line 2 : Array elements (separated by space)
+Line 3 : Integer k
+Output Format :
+k largest elements
+============================================================================================================================================================================
+CODE 2:
+#include<vector>
+#include<queue>
+vector<int> kLargest(int input[], int n, int k){
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     */
+    priority_queue<int,vector<int>,greater<int>> pq;
+    
+    for(int i=0;i<k;i++)
+    {
+        pq.push(input[i]);
+    }
+    for(int j=k;j<n;j++)
+    {
+       if(pq.top()<input[j])
+       {
+           pq.pop();
+           pq.push(input[j]);
+           
+       }
+    }
+    vector<int>ans;
+    while(!pq.empty())
+    {
+      ans.push_back(pq.top());
+        pq.pop();
+    }
+    return ans;
+    
+
+}
