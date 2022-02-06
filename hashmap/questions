@@ -1,0 +1,29 @@
+Code : Pair Sum to 0
+Send Feedback
+Given a random integer array A of size N. Find and print the count of pair of elements in the array which sum up to 0.
+Note: Array A can contain duplicate elements as well.
+Input format:
+The first line of input contains an integer, that denotes the value of the size of the array. Let us denote it with the symbol N.
+The following line contains N space separated integers, that denote the value of the elements of the array.
+Output format :
+The first and only line of output contains the count of pair of elements in the array which sum up to 0. 
+=============================================================================================================================================
+code 1:
+#include <unordered_map>
+
+int pairSum(int *arr, int n) {
+	// Write your code here
+    /*unordered_map <int,int > freq;
+    int pairCount=0;
+    
+    for(int i=0;i<n;i++){
+        int compliment=-arr[i];
+        
+        if(freq.find(compliment)!=freq.end()){
+            pairCount+=freq[compliment];
+        }
+        
+        ++freq[arr[i]];
+    }
+    return pairCount;*/
+    ====================================================================================================================================================
