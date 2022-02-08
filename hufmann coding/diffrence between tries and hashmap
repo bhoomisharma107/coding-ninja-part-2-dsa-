@@ -1,0 +1,47 @@
+Difference between HashMap and TreeMap
+Java HashMap and TreeMap both are the classes of the Java Collections framework. Java Map implementation usually acts as a bucketed hash table. When buckets get too large, they get transformed into nodes of TreeNodes, each structured similarly to those in java.util.TreeMap.
+
+HashMap
+HashMap implements Map<K, V>, Cloneable and Serializable interface. It extends AbstractMap<K, V> class. It belongs to java.util package.
+
+HashMap contains value based on the key.
+It may have a single null key and multiple null values.
+HashMap does not maintain order while iterating.
+It contains unique elements.
+It works on the principle of hashing.
+TreeMap
+TreeMap class extends AbstractMap<K, V> class and implements NavigableMap<K, V >, Cloneable, and Serializable interface. TreeMap is an example of a SortedMap. It is implemented by the Red-Black tree, which means that the order of the keys is sorted.
+
+TreeMap also contains value based on the key.
+TreeMap is sorted by keys.
+It contains unique elements.
+It cannot have a null key but have multiple null values.
+Keys are in ascending order.
+It stores the object in the tree structure.
+Similarities between HashMap and TreeMap
+HashMap and TreeMap classes implement Cloneable and Serializable interface.
+Both the classes extend AbstractMap<K, V> class.
+A Map is an object which stores key-value pairs. In the key-value pair, each key is unique, but their values may be duplicate.
+Both classes represents the mapping from key to values.
+Both maps are not synchronized.
+Map use put() method to add an element in the map.
+The iterator throws a ConcurrentModificationException if the map gets modify in any way.
+The Key difference between HashMap and TreeMap is:
+
+
+HashMap does not preserve the iteration order while the TreeMap preserve the order by using the compareTo() method or a comparator set in the TreeMap's constructor.
+
+The following table describes the differences between HashMap and TreeMap.
+
+Basis	HashMap	TreeMap
+Definition	Java HashMap is a hashtable based implementation of Map interface.	Java TreeMap is a Tree structure-based implementation of Map interface.
+Interface Implements	HashMap implements Map, Cloneable, and Serializable interface.	TreeMap implements NavigableMap, Cloneable, and Serializable interface.
+Null Keys/ Values	HashMap allows a single null key and multiple null values.	TreeMap does not allow null keys but can have multiple null values.
+Homogeneous/ Heterogeneous	HashMap allows heterogeneous elements because it does not perform sorting on keys.	TreeMap allows homogeneous values as a key because of sorting.
+Performance	HashMap is faster than TreeMap because it provides constant-time performance that is O(1) for the basic operations like get() and put().	TreeMap is slow in comparison to HashMap because it provides the performance of O(log(n)) for most operations like add(), remove() and contains().
+Data Structure	The HashMap class uses the hash table.	TreeMap internally uses a Red-Black tree, which is a self-balancing Binary Search Tree.
+Comparison Method	It uses equals() method of the Object class to compare keys. The equals() method of Map class overrides it.	It uses the compareTo() method to compare keys.
+Functionality	HashMap class contains only basic functions like get(), put(), KeySet(), etc. .	TreeMap class is rich in functionality, because it contains functions like: tailMap(), firstKey(), lastKey(), pollFirstEntry(), pollLastEntry().
+Order of elements	HashMap does not maintain any order.	The elements are sorted in natural order (ascending).
+Uses	The HashMap should be used when we do not require key-value pair in sorted order.	The TreeMap should be used when we require key-value pair in sorted (ascending) order.
+Example of HashMap vs TreeMa
